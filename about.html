@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LankaPaint Pro ගැන — ශ්‍රී ලංකාවේ විශ්වාසනීය නිවාස පිංතාරු සේවාව. 12+ වසර, 500+ projects, professional team.">
+<title>ගැන — LankaPaint Pro</title>
+
+<style>
+.page-hero { padding:140px 0 80px; background:linear-gradient(160deg,var(--cream) 60%,var(--off-white)); border-bottom:1px solid var(--border); }
+.page-breadcrumb { display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--smoke);margin-bottom:20px; }
+.page-breadcrumb a { color:var(--terracotta);text-decoration:none; }
+.page-breadcrumb span { opacity:0.4; }
+
+/* Story */
+.story-grid { display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center; }
+.story-visual {
+  position:relative;
+  background:linear-gradient(135deg,var(--terracotta),var(--terra-dark));
+  border-radius:var(--radius-lg); padding:56px 40px;
+  color:#fff;
+}
+.story-visual-stat {
+  display:flex;flex-direction:column;gap:32px;
+}
+.s-stat { border-top:1px solid rgba(255,255,255,0.15); padding-top:24px; }
+.s-stat:first-child { border-top:none; padding-top:0; }
+.s-num { font-family:'Playfair Display',serif; font-size:3rem;font-weight:900;line-height:1; }
+.s-lbl { font-size:0.85rem;color:rgba(255,255,255,0.6);margin-top:4px; }
+.story-badge {
+  position:absolute;top:-16px;right:-16px;
+  background:var(--gold);color:#fff;
+  width:80px;height:80px;border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-weight:900;
+  box-shadow:var(--shadow-md);
+}
+.story-badge-num { font-size:1.6rem;line-height:1; }
+.story-badge-lbl { font-size:0.5rem;letter-spacing:1px;text-transform:uppercase; }
+
+.story-text h2 { font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:20px; }
+.story-text p { color:var(--smoke);line-height:1.8;margin-bottom:16px;font-size:0.95rem; }
+
+/* Team */
+.team-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:24px; }
+.team-card {
+  background:#fff;border:1px solid var(--border);
+  border-radius:var(--radius-md);overflow:hidden;
+  transition:all var(--transition);text-align:center;
+}
+.team-card:hover { box-shadow:var(--shadow-md);transform:translateY(-4px); }
+.team-avatar {
+  width:100%;height:180px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:4rem;
+}
+.team-info { padding:24px; }
+.team-name { font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:4px; }
+.team-role { font-size:0.8rem;color:var(--terracotta);font-weight:600;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:10px; }
+.team-bio  { font-size:0.83rem;color:var(--smoke);line-height:1.65; }
+
+/* Values */
+.values-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:24px; }
+.value-card {
+  background:var(--warm-white);border:1px solid var(--border);
+  border-radius:var(--radius-md);padding:32px;
+  display:flex;gap:20px;align-items:flex-start;
+  transition:all var(--transition);
+}
+.value-card:hover { border-color:rgba(196,87,46,0.3);box-shadow:var(--shadow-sm); }
+.value-icon {
+  width:52px;height:52px;border-radius:var(--radius-sm);
+  background:rgba(196,87,46,0.08);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;flex-shrink:0;
+}
+.value-card h3 { font-size:1rem;font-weight:700;margin-bottom:8px; }
+.value-card p  { font-size:0.855rem;color:var(--smoke);line-height:1.65; }
+
+/* Brands */
+.brands-row { display:flex;gap:24px;justify-content:center;flex-wrap:wrap; }
+.brand-chip {
+  background:#fff;border:1px solid var(--border);
+  border-radius:var(--radius-md);padding:16px 28px;
+  font-weight:700;font-size:0.9rem;letter-spacing:0.3px;
+  transition:all var(--transition);
+}
+.brand-chip:hover { border-color:var(--terracotta);color:var(--terracotta);transform:translateY(-2px); }
+
+@media(max-width:860px){ .story-grid{grid-template-columns:1fr;gap:48px;} .team-grid{grid-template-columns:1fr 1fr;} .values-grid{grid-template-columns:1fr;} }
+@media(max-width:560px){ .team-grid{grid-template-columns:1fr;} }
+</style>
+<style>
+/* ============================================
+   LANKAPAINT PRO — Global Styles
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap');
+
+/* ---- RESET & BASE ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+:root {
+  --cream:       #F7F0E6;
+  --warm-white:  #FDFAF6;
+  --off-white:   #F2EBE0;
+  --deep-brown:  #1E1109;
+  --mid-brown:   #3D2314;
+  --terracotta:  #C4572E;
+  --terra-light: #E07050;
+  --terra-dark:  #9E3E1A;
+  --gold:        #C9962A;
+  --gold-light:  #E5B84A;
+  --sage:        #5A7D5C;
+  --sage-light:  #7FA882;
+  --smoke:       #8A7A70;
+  --border:      rgba(196,87,46,0.12);
+  --shadow-sm:   0 2px 8px rgba(30,17,9,0.08);
+  --shadow-md:   0 8px 32px rgba(30,17,9,0.12);
+  --shadow-lg:   0 24px 64px rgba(30,17,9,0.16);
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --radius-full: 100px;
+  --transition:  0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--warm-white);
+  color: var(--deep-brown);
+  line-height: 1.6;
+}
+
+/* ---- TYPOGRAPHY ---- */
+h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.15; }
+h4, h5, h6 { font-family: 'DM Sans', sans-serif; font-weight: 600; }
+
+.display-serif { font-family: 'DM Serif Display', serif; }
+.text-terra { color: var(--terracotta); }
+.text-gold  { color: var(--gold); }
+.text-smoke { color: var(--smoke); }
+
+/* ---- LAYOUT ---- */
+.container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 96px 0; }
+.section-sm { padding: 64px 0; }
+
+/* ---- SECTION LABELS ---- */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--terracotta); margin-bottom: 16px;
+}
+.eyebrow::before, .eyebrow::after {
+  content: ''; display: block;
+  width: 24px; height: 1.5px; background: currentColor;
+}
+
+/* ---- BUTTONS ---- */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: var(--radius-full);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem; font-weight: 600; letter-spacing: 0.3px;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--terracotta); color: #fff;
+  box-shadow: 0 4px 16px rgba(196,87,46,0.35);
+}
+.btn-primary:hover {
+  background: var(--terra-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(196,87,46,0.45);
+}
+.btn-outline {
+  background: transparent; color: var(--deep-brown);
+  border: 1.5px solid var(--border);
+}
+.btn-outline:hover { border-color: var(--terracotta); color: var(--terracotta); }
+.btn-gold {
+  background: var(--gold); color: #fff;
+  box-shadow: 0 4px 16px rgba(201,150,42,0.35);
+}
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+.btn-white {
+  background: #fff; color: var(--terracotta);
+}
+.btn-white:hover { background: var(--cream); }
+.btn-lg { padding: 17px 36px; font-size: 1rem; }
+.btn-sm { padding: 10px 20px; font-size: 0.82rem; }
+
+/* ---- NAVBAR ---- */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(253,250,246,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow var(--transition);
+}
+.navbar.scrolled { box-shadow: var(--shadow-md); }
+.navbar-inner {
+  max-width: 1180px; margin: 0 auto; padding: 0 24px;
+  height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.45rem; font-weight: 900;
+  color: var(--deep-brown); text-decoration: none;
+  letter-spacing: -0.5px;
+}
+.logo span { color: var(--terracotta); }
+.nav-links {
+  display: flex; align-items: center;
+  list-style: none; gap: 8px;
+}
+.nav-links a {
+  display: block; padding: 8px 14px; border-radius: var(--radius-full);
+  font-size: 0.88rem; font-weight: 500;
+  text-decoration: none; color: var(--mid-brown);
+  transition: all var(--transition);
+}
+.nav-links a:hover { background: var(--off-white); color: var(--terracotta); }
+.nav-links a.active { color: var(--terracotta); font-weight: 600; }
+.nav-cta { margin-left: 8px; }
+
+/* Mobile hamburger */
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 8px;
+}
+.hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--deep-brown); border-radius: 2px;
+  transition: all var(--transition);
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile nav */
+.mobile-nav {
+  display: none; position: fixed; inset: 68px 0 0 0;
+  background: var(--warm-white); z-index: 999;
+  padding: 32px 24px;
+  flex-direction: column; gap: 8px;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  display: flex; align-items: center;
+  padding: 16px 20px; border-radius: var(--radius-md);
+  font-size: 1.1rem; font-weight: 500;
+  text-decoration: none; color: var(--deep-brown);
+  border: 1px solid var(--border);
+  transition: all var(--transition);
+}
+.mobile-nav a:hover, .mobile-nav a.active {
+  background: var(--off-white); color: var(--terracotta);
+  border-color: var(--terracotta);
+}
+.mobile-nav-cta {
+  margin-top: 16px; display: flex; flex-direction: column; gap: 10px;
+}
+
+/* ---- CARDS ---- */
+.card {
+  background: #fff; border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  overflow: hidden; transition: all var(--transition);
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(196,87,46,0.25);
+}
+
+/* ---- BADGE ---- */
+.badge {
+  display: inline-flex; align-items: center;
+  gap: 6px; padding: 5px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.badge-terra { background: rgba(196,87,46,0.1); color: var(--terracotta); }
+.badge-gold  { background: rgba(201,150,42,0.1); color: var(--gold); }
+.badge-sage  { background: rgba(90,125,92,0.1); color: var(--sage); }
+.badge-green { background: rgba(34,197,94,0.1); color: #16a34a; }
+
+/* ---- FLOATING ACTIONS ---- */
+.fab-group {
+  position: fixed; bottom: 28px; right: 24px;
+  display: flex; flex-direction: column; align-items: flex-end;
+  gap: 12px; z-index: 900;
+}
+.fab {
+  width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; font-size: 1.4rem;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition);
+  border: none; cursor: pointer;
+}
+.fab:hover { transform: scale(1.1); }
+.fab-whatsapp { background: #25D366; color: #fff; }
+.fab-phone    { background: var(--terracotta); color: #fff; }
+.fab-label {
+  background: var(--deep-brown); color: #fff;
+  font-size: 0.78rem; font-weight: 600;
+  padding: 4px 10px; border-radius: var(--radius-full);
+  pointer-events: none; white-space: nowrap;
+  opacity: 0; transform: translateX(10px);
+  transition: all var(--transition);
+}
+.fab-wrap { display: flex; align-items: center; gap: 10px; }
+.fab-wrap:hover .fab-label { opacity: 1; transform: translateX(0); }
+
+/* ---- FOOTER ---- */
+footer {
+  background: var(--deep-brown); color: rgba(247,240,230,0.7);
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 48px; padding: 72px 0 48px;
+}
+.footer-brand .logo { color: var(--cream); }
+.footer-brand p {
+  margin-top: 14px; font-size: 0.875rem; line-height: 1.7;
+  color: rgba(247,240,230,0.55);
+}
+.footer-col h5 {
+  font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(247,240,230,0.4); margin-bottom: 20px;
+}
+.footer-col a {
+  display: block; margin-bottom: 10px;
+  font-size: 0.9rem; text-decoration: none;
+  color: rgba(247,240,230,0.65);
+  transition: color var(--transition);
+}
+.footer-col a:hover { color: var(--gold); }
+.footer-bottom {
+  border-top: 1px solid rgba(247,240,230,0.08);
+  padding: 24px 0;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.82rem;
+}
+.social-links { display: flex; gap: 12px; }
+.social-links a {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(247,240,230,0.08);
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; font-size: 1rem;
+  transition: background var(--transition);
+}
+.social-links a:hover { background: var(--terracotta); }
+
+/* ---- UTILITIES ---- */
+.text-center { text-align: center; }
+.mt-4 { margin-top: 16px; }
+.mt-8 { margin-top: 32px; }
+.mt-12 { margin-top: 48px; }
+.mb-2 { margin-bottom: 8px; }
+.mb-4 { margin-bottom: 16px; }
+
+/* ---- ANIMATIONS ---- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(196,87,46,0.4); }
+  70%  { box-shadow: 0 0 0 12px rgba(196,87,46,0); }
+  100% { box-shadow: 0 0 0 0 rgba(196,87,46,0); }
+}
+.animate-fadeUp   { animation: fadeUp 0.7s ease both; }
+.animate-delay-1  { animation-delay: 0.1s; }
+.animate-delay-2  { animation-delay: 0.2s; }
+.animate-delay-3  { animation-delay: 0.3s; }
+
+/* ---- SCROLL REVEAL ---- */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ---- WHATSAPP CTA STRIP ---- */
+.wa-strip {
+  background: #075E54; color: #fff;
+  padding: 16px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+}
+.wa-strip p { font-size: 0.9rem; }
+.wa-strip a {
+  background: #25D366; color: #fff;
+  padding: 10px 22px; border-radius: var(--radius-full);
+  text-decoration: none; font-weight: 700; font-size: 0.88rem;
+  transition: opacity var(--transition);
+}
+.wa-strip a:hover { opacity: 0.9; }
+
+/* ---- STAR RATING ---- */
+.stars { color: var(--gold); letter-spacing: 2px; font-size: 0.9rem; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 900px) {
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .section { padding: 72px 0; }
+}
+@media (max-width: 600px) {
+  .footer-top { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+  .section { padding: 56px 0; }
+  .btn-lg { padding: 15px 28px; }
+}
+
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a class="logo" href="index.html">Lanka<span>Paint</span> Pro</a>
+    <ul class="nav-links">
+      <li><a href="index.html">මුල් පිටුව</a></li><li><a href="services.html">සේවා</a></li>
+      <li><a href="about.html">ගැන</a></li><li><a href="process.html">ක්‍රියාවලිය</a></li>
+      <li><a href="reviews.html">සාක්ෂ්‍ය</a></li>
+      <li><a href="contact.html" class="btn btn-primary btn-sm nav-cta">📞 ඇමතීම</a></li>
+    </ul>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <a href="index.html">🏠 මුල් පිටුව</a><a href="services.html">🎨 සේවා</a>
+  <a href="about.html">👥 ගැන</a><a href="process.html">📋 ක්‍රියාවලිය</a>
+  <a href="reviews.html">⭐ සාක්ෂ්‍ය</a>
+  <div class="mobile-nav-cta">
+    <a href="contact.html" class="btn btn-primary btn-lg" style="justify-content:center;">📋 නොමිලේ ඇස්තමේන්තු</a>
+    <a href="https://wa.me/94711234567" class="btn btn-gold btn-lg" style="justify-content:center;" target="_blank">💬 WhatsApp</a>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="page-breadcrumb"><a href="index.html">මුල් පිටුව</a><span>/</span> ගැන</div>
+    <div class="eyebrow">අපේ ගැන</div>
+    <h1>ශ්‍රී ලංකාවේ<br>විශ්වාසනීය නාමය</h1>
+    <p>2012 සිට ශ්‍රී ලංකාව පුරා 500+ ගෙවල් සාර්ථකව paint කළ professional team.</p>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="section">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-visual reveal">
+        <div class="story-badge">
+          <span class="story-badge-num">12</span>
+          <span class="story-badge-lbl">YEARS</span>
+        </div>
+        <div class="story-visual-stat">
+          <div class="s-stat">
+            <div class="s-num">500+</div>
+            <div class="s-lbl">සිදු කළ ව්‍යාපෘති</div>
+          </div>
+          <div class="s-stat">
+            <div class="s-num">98%</div>
+            <div class="s-lbl">සතුටුදායක ගෙවල් හිමිකරුවන්</div>
+          </div>
+          <div class="s-stat">
+            <div class="s-num">25+</div>
+            <div class="s-lbl">නිපුණ කාර්ය මණ්ඩලය</div>
+          </div>
+          <div class="s-stat">
+            <div class="s-num">15+</div>
+            <div class="s-lbl">ගෙවල් සෑම සතියෙකටම</div>
+          </div>
+        </div>
+      </div>
+      <div class="story-text reveal animate-delay-1">
+        <div class="eyebrow">අපේ කතාව</div>
+        <h2>2012 සිට<br>ඔබේ නිවස සඳහා</h2>
+        <p>LankaPaint Pro ආරම්භ කළේ 2012 දී, කුඩා team එකක් සමඟ. අප අදහස සරළයි — ගෙවල් හිමිකරුවන්ට high quality painting service affordable price ලාට.</p>
+        <p>2012 සිට අදදක් දශකයකට වැඩි කාලයක් ශ්‍රී ලංකාව පුරා — කොළඹ, ගම්පහ, කළුතර, ගාල්ල, කෑගල්ල, නුවර ඇතුළු ස්ථාන රාශියක — 500කට අධික ව්‍යාපෘති සාර්ථකව.</p>
+        <p>අදත් අප අදහස ඒ ම ය. Honesty, quality, punctuality — ගෙවල් හිමිකරුවන් 100% satisfied.</p>
+        <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn-primary">📋 ඇස්තමේන්තු ලබා ගන්න</a>
+          <a href="process.html" class="btn btn-outline">ක්‍රියාවලිය බලන්න →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="section-sm" style="background:var(--off-white);">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <div class="eyebrow">අපේ ගුණාත්මකතා</div>
+      <h2 style="font-size:clamp(1.8rem,3vw,2.4rem);">ඇයි අප වෙනස්?</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-icon">🏆</div>
+        <div><h3>ගුණාත්මකතා (Quality)</h3><p>Premium brands — Dulux, Nippon, Asian Paints. No cheap substitutes. Surface prep සිට final coat දක්වා professional standard.</p></div>
+      </div>
+      <div class="value-card reveal animate-delay-1">
+        <div class="value-icon">⏰</div>
+        <div><h3>කාලීන (Punctuality)</h3><p>නියමිත දිනට 95%+ completion rate. ප්‍රමාදය ඇතිවුවොත් ගාස්තු discount දෙනු ලැබේ. ඔබේ කාලය අපට ගරුත්වයි.</p></div>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon">💬</div>
+        <div><h3>හොඳ සන්නිවේදනය</h3><p>Project එකේ ආරම්භ සිට සම්පූර්ණය දක්වා ඔබව update කරනවා. WhatsApp ගිහින් ඕනෑ ම වේලාවෙ ask කරන්න.</p></div>
+      </div>
+      <div class="value-card reveal animate-delay-1">
+        <div class="value-icon">🛡️</div>
+        <div><h3>2 වසර Warranty</h3><p>සෑම project ectකටම 2 year warranty. Defects නිවැරදි කිරීම නොමිලේ. ඔබේ investment ආරක්ෂිතයි.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <div class="eyebrow">කාර්ය මණ්ඩලය</div>
+      <h2 style="font-size:clamp(1.8rem,3vw,2.4rem);">Expert Team</h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#c4572e22,#c4572e44);">👨‍🎨</div>
+        <div class="team-info">
+          <div class="team-name">ප්‍රියන්ත රත්නායක</div>
+          <div class="team-role">Founder & Head Painter</div>
+          <p class="team-bio">12+ වසර painting experience. Dulux certified applicator. 300+ projects personally supervised.</p>
+        </div>
+      </div>
+      <div class="team-card reveal animate-delay-1">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#5a7d5c22,#5a7d5c44);">👩‍💼</div>
+        <div class="team-info">
+          <div class="team-name">කල්යාණී ජයසිංහ</div>
+          <div class="team-role">Interior Design Consultant</div>
+          <p class="team-bio">Colour psychology specialist. ඔබේ නිවසට perfect colour scheme design. 8 years experience.</p>
+        </div>
+      </div>
+      <div class="team-card reveal animate-delay-2">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#c9962a22,#c9962a44);">👨‍🔧</div>
+        <div class="team-info">
+          <div class="team-name">ශාන් ගොඩගේ</div>
+          <div class="team-role">Waterproofing Specialist</div>
+          <p class="team-bio">Sika certified technician. Roof, bathroom, foundation waterproofing expert. 6 years experience.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section class="section-sm" style="background:var(--cream);border-top:1px solid var(--border);">
+  <div class="container text-center">
+    <div class="eyebrow" style="justify-content:center;">Certified Partners</div>
+    <h2 style="font-size:clamp(1.5rem,2.5vw,2rem);margin-bottom:8px;">ලොව ප්‍රසිද්ධ Brands</h2>
+    <p style="color:var(--smoke);margin-bottom:36px;font-size:0.9rem;">Authorized applicators. Genuine products only.</p>
+    <div class="brands-row reveal">
+      <div class="brand-chip">🎨 Dulux</div>
+      <div class="brand-chip">🎨 Nippon Paint</div>
+      <div class="brand-chip">🎨 Asian Paints</div>
+      <div class="brand-chip">🎨 Weathershield</div>
+      <div class="brand-chip">🔧 Sika</div>
+      <div class="brand-chip">🔧 Pidilite</div>
+      <div class="brand-chip">🎨 Rocell</div>
+    </div>
+  </div>
+</section>
+
+<div style="background:var(--deep-brown);padding:80px 0;text-align:center;">
+  <div class="container">
+    <h2 style="color:var(--cream);font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:12px;">අද ම ආරම්භ කරමු</h2>
+    <p style="color:rgba(247,240,230,0.6);margin-bottom:32px;">නොමිලේ ඇස්තමේන්තු — 24 ගණනින් reply</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="contact.html" class="btn btn-primary btn-lg">📋 ඇස්තමේන්තු ලබා ගන්න</a>
+      <a href="https://wa.me/94711234567" class="btn btn-gold btn-lg" target="_blank">💬 WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand"><a class="logo" href="index.html">Lanka<span style="color:var(--terracotta);">Paint</span> Pro</a><p>ශ්‍රී ලංකාවේ විශ්වාසනීය නිවාස පිංතාරු සේවාව.</p></div>
+      <div class="footer-col"><h5>Links</h5><a href="index.html">මුල් පිටුව</a><a href="services.html">සේවා</a><a href="about.html">ගැන</a><a href="process.html">ක්‍රියාවලිය</a><a href="reviews.html">සාක්ෂ්‍ය</a><a href="contact.html">ඇමතීම</a></div>
+      <div class="footer-col"><h5>සේවා</h5><a href="services.html">Interior</a><a href="services.html">Exterior</a><a href="services.html">Waterproofing</a><a href="services.html">Eco Paint</a></div>
+      <div class="footer-col"><h5>ඇමතීම</h5><a href="tel:0711234567">📞 071 123 4567</a><a href="https://wa.me/94711234567" target="_blank">💬 WhatsApp</a><a href="contact.html">📋 Estimate</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2024 LankaPaint Pro</p></div>
+  </div>
+</footer>
+<div class="fab-group">
+  <div class="fab-wrap"><span class="fab-label">WhatsApp</span><a href="https://wa.me/94711234567" class="fab fab-whatsapp" target="_blank">💬</a></div>
+  <div class="fab-wrap"><span class="fab-label">Call</span><a href="tel:0711234567" class="fab fab-phone">📞</a></div>
+</div>
+<script>
+// ============================================
+// LANKAPAINT PRO — Shared JS
+// ============================================
+
+// Navbar scroll effect
+(function() {
+  const navbar = document.querySelector('.navbar');
+  if (!navbar) return;
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+})();
+
+// Mobile hamburger
+(function() {
+  const hamburger = document.querySelector('.hamburger');
+  const mobileNav = document.querySelector('.mobile-nav');
+  if (!hamburger || !mobileNav) return;
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+    document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+  });
+  mobileNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+
+// Scroll reveal
+(function() {
+  const els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(el => io.observe(el));
+})();
+
+// Active nav link
+(function() {
+  const path = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(a => {
+    const href = a.getAttribute('href') || '';
+    if (href === path || (path === '' && href === 'index.html')) {
+      a.classList.add('active');
+    }
+  });
+})();
+
+// WhatsApp quick message
+function waMsg(msg) {
+  const phone = '94711234567';
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+}
+
+// Toast notification
+function showToast(msg, type = 'success') {
+  const t = document.createElement('div');
+  t.style.cssText = `
+    position:fixed; bottom:90px; left:50%; transform:translateX(-50%);
+    background:${type==='success'?'#1a7a3a':'#c4572e'}; color:#fff;
+    padding:12px 24px; border-radius:100px; font-size:0.9rem; font-weight:600;
+    z-index:9999; box-shadow:0 8px 24px rgba(0,0,0,0.2);
+    animation:fadeIn 0.3s ease;
+  `;
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 3500);
+}
+
+</script>
+</body>
+</html>

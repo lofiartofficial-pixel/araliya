@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LankaPaint Pro සේවා — ගෙදර ඇතුළත, පිටත, Waterproofing, Eco-Friendly, Special Design. ගාස්තු සහ තොරතුරු.">
+<title>සේවා — LankaPaint Pro</title>
+
+<style>
+/* PAGE HERO */
+.page-hero {
+  padding: 140px 0 80px;
+  background: linear-gradient(160deg, var(--cream) 60%, var(--off-white));
+  border-bottom: 1px solid var(--border);
+}
+.page-breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.82rem; color: var(--smoke);
+  margin-bottom: 20px;
+}
+.page-breadcrumb a { color: var(--terracotta); text-decoration: none; }
+.page-breadcrumb span { opacity: 0.4; }
+.page-hero h1 { font-size: clamp(2rem, 4.5vw, 3.2rem); margin-bottom: 16px; }
+.page-hero p  { font-size: 1.05rem; color: var(--smoke); max-width: 560px; }
+
+/* SERVICE DETAIL CARDS */
+.service-list { display: flex; flex-direction: column; gap: 2px; }
+.service-detail {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden; transition: all var(--transition);
+}
+.service-detail:hover { box-shadow: var(--shadow-md); }
+.service-detail-inner {
+  display: grid; grid-template-columns: 1fr 340px;
+  gap: 0;
+}
+.service-info { padding: 40px 36px; }
+.service-meta {
+  background: var(--off-white);
+  padding: 40px 32px;
+  border-left: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 20px;
+}
+.service-icon-lg {
+  font-size: 2.6rem; margin-bottom: 16px; display: block;
+}
+.service-info h2 {
+  font-size: 1.5rem; font-weight: 700; margin-bottom: 10px;
+}
+.service-info p {
+  font-size: 0.9rem; color: var(--smoke);
+  line-height: 1.75; margin-bottom: 20px;
+}
+.service-features {
+  display: flex; flex-direction: column; gap: 8px;
+  margin-bottom: 24px;
+}
+.service-feature {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.875rem;
+}
+.service-feature::before {
+  content: '✓';
+  width: 20px; height: 20px; border-radius: 50%;
+  background: rgba(90,125,92,0.15); color: var(--sage);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 700; flex-shrink: 0;
+}
+.meta-price-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--smoke); font-weight: 700; }
+.meta-price-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem; font-weight: 900; color: var(--terracotta);
+  line-height: 1.1;
+}
+.meta-price-note { font-size: 0.78rem; color: var(--smoke); margin-top: 4px; }
+.meta-time {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.85rem; color: var(--smoke);
+}
+.meta-badge { margin-bottom: auto; }
+
+/* Colour Picker Section */
+.colours-section { background: var(--deep-brown); padding: 80px 0; }
+.colours-section .eyebrow { color: var(--gold); }
+.colour-grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 12px; margin-top: 40px;
+}
+.colour-chip {
+  aspect-ratio: 1; border-radius: var(--radius-sm);
+  position: relative; overflow: hidden;
+  cursor: pointer; transition: transform var(--transition);
+}
+.colour-chip:hover { transform: scale(1.08); z-index: 1; }
+.colour-chip span {
+  position: absolute; inset: 0;
+  display: flex; align-items: flex-end;
+  padding: 8px; font-size: 0.62rem;
+  color: rgba(255,255,255,0.9); font-weight: 600;
+  background: linear-gradient(transparent, rgba(0,0,0,0.45));
+  opacity: 0; transition: opacity var(--transition);
+}
+.colour-chip:hover span { opacity: 1; }
+
+/* Pricing table */
+.pricing-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-top: 32px;
+}
+.pricing-table th {
+  background: var(--deep-brown); color: var(--cream);
+  padding: 16px 24px; text-align: left;
+  font-size: 0.82rem; font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.pricing-table td {
+  padding: 16px 24px; font-size: 0.88rem;
+  border-top: 1px solid var(--border);
+}
+.pricing-table tr:hover td { background: var(--off-white); }
+.price-highlight { color: var(--terracotta); font-weight: 700; }
+
+@media (max-width: 860px) {
+  .service-detail-inner { grid-template-columns: 1fr; }
+  .service-meta { border-left: none; border-top: 1px solid var(--border); }
+  .colour-grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (max-width: 500px) {
+  .colour-grid { grid-template-columns: repeat(4, 1fr); }
+  .service-info { padding: 28px 20px; }
+  .service-meta { padding: 24px 20px; }
+}
+</style>
+<style>
+/* ============================================
+   LANKAPAINT PRO — Global Styles
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap');
+
+/* ---- RESET & BASE ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+:root {
+  --cream:       #F7F0E6;
+  --warm-white:  #FDFAF6;
+  --off-white:   #F2EBE0;
+  --deep-brown:  #1E1109;
+  --mid-brown:   #3D2314;
+  --terracotta:  #C4572E;
+  --terra-light: #E07050;
+  --terra-dark:  #9E3E1A;
+  --gold:        #C9962A;
+  --gold-light:  #E5B84A;
+  --sage:        #5A7D5C;
+  --sage-light:  #7FA882;
+  --smoke:       #8A7A70;
+  --border:      rgba(196,87,46,0.12);
+  --shadow-sm:   0 2px 8px rgba(30,17,9,0.08);
+  --shadow-md:   0 8px 32px rgba(30,17,9,0.12);
+  --shadow-lg:   0 24px 64px rgba(30,17,9,0.16);
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --radius-full: 100px;
+  --transition:  0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--warm-white);
+  color: var(--deep-brown);
+  line-height: 1.6;
+}
+
+/* ---- TYPOGRAPHY ---- */
+h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.15; }
+h4, h5, h6 { font-family: 'DM Sans', sans-serif; font-weight: 600; }
+
+.display-serif { font-family: 'DM Serif Display', serif; }
+.text-terra { color: var(--terracotta); }
+.text-gold  { color: var(--gold); }
+.text-smoke { color: var(--smoke); }
+
+/* ---- LAYOUT ---- */
+.container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 96px 0; }
+.section-sm { padding: 64px 0; }
+
+/* ---- SECTION LABELS ---- */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--terracotta); margin-bottom: 16px;
+}
+.eyebrow::before, .eyebrow::after {
+  content: ''; display: block;
+  width: 24px; height: 1.5px; background: currentColor;
+}
+
+/* ---- BUTTONS ---- */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: var(--radius-full);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem; font-weight: 600; letter-spacing: 0.3px;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--terracotta); color: #fff;
+  box-shadow: 0 4px 16px rgba(196,87,46,0.35);
+}
+.btn-primary:hover {
+  background: var(--terra-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(196,87,46,0.45);
+}
+.btn-outline {
+  background: transparent; color: var(--deep-brown);
+  border: 1.5px solid var(--border);
+}
+.btn-outline:hover { border-color: var(--terracotta); color: var(--terracotta); }
+.btn-gold {
+  background: var(--gold); color: #fff;
+  box-shadow: 0 4px 16px rgba(201,150,42,0.35);
+}
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+.btn-white {
+  background: #fff; color: var(--terracotta);
+}
+.btn-white:hover { background: var(--cream); }
+.btn-lg { padding: 17px 36px; font-size: 1rem; }
+.btn-sm { padding: 10px 20px; font-size: 0.82rem; }
+
+/* ---- NAVBAR ---- */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(253,250,246,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow var(--transition);
+}
+.navbar.scrolled { box-shadow: var(--shadow-md); }
+.navbar-inner {
+  max-width: 1180px; margin: 0 auto; padding: 0 24px;
+  height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.45rem; font-weight: 900;
+  color: var(--deep-brown); text-decoration: none;
+  letter-spacing: -0.5px;
+}
+.logo span { color: var(--terracotta); }
+.nav-links {
+  display: flex; align-items: center;
+  list-style: none; gap: 8px;
+}
+.nav-links a {
+  display: block; padding: 8px 14px; border-radius: var(--radius-full);
+  font-size: 0.88rem; font-weight: 500;
+  text-decoration: none; color: var(--mid-brown);
+  transition: all var(--transition);
+}
+.nav-links a:hover { background: var(--off-white); color: var(--terracotta); }
+.nav-links a.active { color: var(--terracotta); font-weight: 600; }
+.nav-cta { margin-left: 8px; }
+
+/* Mobile hamburger */
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 8px;
+}
+.hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--deep-brown); border-radius: 2px;
+  transition: all var(--transition);
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* Mobile nav */
+.mobile-nav {
+  display: none; position: fixed; inset: 68px 0 0 0;
+  background: var(--warm-white); z-index: 999;
+  padding: 32px 24px;
+  flex-direction: column; gap: 8px;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a {
+  display: flex; align-items: center;
+  padding: 16px 20px; border-radius: var(--radius-md);
+  font-size: 1.1rem; font-weight: 500;
+  text-decoration: none; color: var(--deep-brown);
+  border: 1px solid var(--border);
+  transition: all var(--transition);
+}
+.mobile-nav a:hover, .mobile-nav a.active {
+  background: var(--off-white); color: var(--terracotta);
+  border-color: var(--terracotta);
+}
+.mobile-nav-cta {
+  margin-top: 16px; display: flex; flex-direction: column; gap: 10px;
+}
+
+/* ---- CARDS ---- */
+.card {
+  background: #fff; border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  overflow: hidden; transition: all var(--transition);
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(196,87,46,0.25);
+}
+
+/* ---- BADGE ---- */
+.badge {
+  display: inline-flex; align-items: center;
+  gap: 6px; padding: 5px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.badge-terra { background: rgba(196,87,46,0.1); color: var(--terracotta); }
+.badge-gold  { background: rgba(201,150,42,0.1); color: var(--gold); }
+.badge-sage  { background: rgba(90,125,92,0.1); color: var(--sage); }
+.badge-green { background: rgba(34,197,94,0.1); color: #16a34a; }
+
+/* ---- FLOATING ACTIONS ---- */
+.fab-group {
+  position: fixed; bottom: 28px; right: 24px;
+  display: flex; flex-direction: column; align-items: flex-end;
+  gap: 12px; z-index: 900;
+}
+.fab {
+  width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; font-size: 1.4rem;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition);
+  border: none; cursor: pointer;
+}
+.fab:hover { transform: scale(1.1); }
+.fab-whatsapp { background: #25D366; color: #fff; }
+.fab-phone    { background: var(--terracotta); color: #fff; }
+.fab-label {
+  background: var(--deep-brown); color: #fff;
+  font-size: 0.78rem; font-weight: 600;
+  padding: 4px 10px; border-radius: var(--radius-full);
+  pointer-events: none; white-space: nowrap;
+  opacity: 0; transform: translateX(10px);
+  transition: all var(--transition);
+}
+.fab-wrap { display: flex; align-items: center; gap: 10px; }
+.fab-wrap:hover .fab-label { opacity: 1; transform: translateX(0); }
+
+/* ---- FOOTER ---- */
+footer {
+  background: var(--deep-brown); color: rgba(247,240,230,0.7);
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 48px; padding: 72px 0 48px;
+}
+.footer-brand .logo { color: var(--cream); }
+.footer-brand p {
+  margin-top: 14px; font-size: 0.875rem; line-height: 1.7;
+  color: rgba(247,240,230,0.55);
+}
+.footer-col h5 {
+  font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(247,240,230,0.4); margin-bottom: 20px;
+}
+.footer-col a {
+  display: block; margin-bottom: 10px;
+  font-size: 0.9rem; text-decoration: none;
+  color: rgba(247,240,230,0.65);
+  transition: color var(--transition);
+}
+.footer-col a:hover { color: var(--gold); }
+.footer-bottom {
+  border-top: 1px solid rgba(247,240,230,0.08);
+  padding: 24px 0;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.82rem;
+}
+.social-links { display: flex; gap: 12px; }
+.social-links a {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(247,240,230,0.08);
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; font-size: 1rem;
+  transition: background var(--transition);
+}
+.social-links a:hover { background: var(--terracotta); }
+
+/* ---- UTILITIES ---- */
+.text-center { text-align: center; }
+.mt-4 { margin-top: 16px; }
+.mt-8 { margin-top: 32px; }
+.mt-12 { margin-top: 48px; }
+.mb-2 { margin-bottom: 8px; }
+.mb-4 { margin-bottom: 16px; }
+
+/* ---- ANIMATIONS ---- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(196,87,46,0.4); }
+  70%  { box-shadow: 0 0 0 12px rgba(196,87,46,0); }
+  100% { box-shadow: 0 0 0 0 rgba(196,87,46,0); }
+}
+.animate-fadeUp   { animation: fadeUp 0.7s ease both; }
+.animate-delay-1  { animation-delay: 0.1s; }
+.animate-delay-2  { animation-delay: 0.2s; }
+.animate-delay-3  { animation-delay: 0.3s; }
+
+/* ---- SCROLL REVEAL ---- */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ---- WHATSAPP CTA STRIP ---- */
+.wa-strip {
+  background: #075E54; color: #fff;
+  padding: 16px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+}
+.wa-strip p { font-size: 0.9rem; }
+.wa-strip a {
+  background: #25D366; color: #fff;
+  padding: 10px 22px; border-radius: var(--radius-full);
+  text-decoration: none; font-weight: 700; font-size: 0.88rem;
+  transition: opacity var(--transition);
+}
+.wa-strip a:hover { opacity: 0.9; }
+
+/* ---- STAR RATING ---- */
+.stars { color: var(--gold); letter-spacing: 2px; font-size: 0.9rem; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 900px) {
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .section { padding: 72px 0; }
+}
+@media (max-width: 600px) {
+  .footer-top { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 16px; text-align: center; }
+  .section { padding: 56px 0; }
+  .btn-lg { padding: 15px 28px; }
+}
+
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a class="logo" href="index.html">Lanka<span>Paint</span> Pro</a>
+    <ul class="nav-links">
+      <li><a href="index.html">මුල් පිටුව</a></li>
+      <li><a href="services.html">සේවා</a></li>
+      <li><a href="about.html">ගැන</a></li>
+      <li><a href="process.html">ක්‍රියාවලිය</a></li>
+      <li><a href="reviews.html">සාක්ෂ්‍ය</a></li>
+      <li><a href="contact.html" class="btn btn-primary btn-sm nav-cta">📞 ඇමතීම</a></li>
+    </ul>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <a href="index.html">🏠 මුල් පිටුව</a><a href="services.html">🎨 සේවා</a>
+  <a href="about.html">👥 ගැන</a><a href="process.html">📋 ක්‍රියාවලිය</a>
+  <a href="reviews.html">⭐ සාක්ෂ්‍ය</a>
+  <div class="mobile-nav-cta">
+    <a href="contact.html" class="btn btn-primary btn-lg" style="justify-content:center;">📋 නොමිලේ ඇස්තමේන්තු</a>
+    <a href="https://wa.me/94711234567" class="btn btn-gold btn-lg" style="justify-content:center;" target="_blank">💬 WhatsApp</a>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="page-breadcrumb"><a href="index.html">මුල් පිටුව</a><span>/</span> සේවා</div>
+    <div class="eyebrow">අපගේ සේවා</div>
+    <h1>සෑම නිවසකටම<br>ගැළපෙන සේවාවක්</h1>
+    <p>ඉහළ ගුණාත්මකතාවකින් යුත් paint, නිපුණ කාර්ය මණ්ඩලය, 2 වසර warranty.</p>
+    <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;">
+      <a href="contact.html" class="btn btn-primary">📋 නොමිලේ ඇස්තමේන්තු</a>
+      <a href="https://wa.me/94711234567" class="btn btn-gold" target="_blank">💬 WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="service-list">
+
+      <!-- 1 -->
+      <div class="service-detail reveal">
+        <div class="service-detail-inner">
+          <div class="service-info">
+            <span class="service-icon-lg">🏠</span>
+            <h2>ගෙදර ඇතුළත (Interior)</h2>
+            <p>කාමර, සාලය, කුස්සිය, නාන කාමර ඇතුළු සියලු අභ්‍යන්තර ස්ථාන. Wall preparation, primer, top coat — step-by-step professional method.</p>
+            <div class="service-features">
+              <div class="service-feature">Wall smoothing & crack filling</div>
+              <div class="service-feature">Premium primer application</div>
+              <div class="service-feature">2-coat top finish</div>
+              <div class="service-feature">Ceiling + wall matching</div>
+              <div class="service-feature">Furniture ආරක්ෂා</div>
+              <div class="service-feature">Cleanup & inspection</div>
+            </div>
+            <a href="contact.html" class="btn btn-primary">ඇස්තමේන්තු ලබා ගන්න →</a>
+          </div>
+          <div class="service-meta">
+            <div class="meta-badge"><span class="badge badge-terra">⭐ Best Seller</span></div>
+            <div>
+              <div class="meta-price-label">ආරම්භ වන ගාස්තු</div>
+              <div class="meta-price-value">රු. 25<small style="font-size:1rem;">/sqft</small></div>
+              <div class="meta-price-note">Primer + 2 coats included</div>
+            </div>
+            <div class="meta-time">⏱️ 2–5 දිනය</div>
+            <div class="meta-time">✅ 2 Year Warranty</div>
+            <div class="meta-time">🎨 1000+ Colours</div>
+            <a href="https://wa.me/94711234567?text=Interior painting ගැන enquire කරන්නට කැමතියි" class="btn btn-gold btn-sm" target="_blank">💬 WhatsApp Quote</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="service-detail reveal">
+        <div class="service-detail-inner">
+          <div class="service-info">
+            <span class="service-icon-lg">🏗️</span>
+            <h2>ගෙදර පිටත (Exterior)</h2>
+            <p>UV ප්‍රතිරෝධී, කාලගුණ ඔරොත්තු දෙන premium exterior paints. බිත්ති, ගේ දොරකඩ, pillars ඇතුළු පිටත සියල්ල. ස්ථිරසාර ප්‍රතිඵල 7+ වසර.</p>
+            <div class="service-features">
+              <div class="service-feature">Pressure washing & surface prep</div>
+              <div class="service-feature">Weathershield / Masonry coat</div>
+              <div class="service-feature">UV & rain resistant formula</div>
+              <div class="service-feature">Anti-fungal & algae protection</div>
+              <div class="service-feature">Scaffolding included</div>
+              <div class="service-feature">Final quality check</div>
+            </div>
+            <a href="contact.html" class="btn btn-primary">ඇස්තමේන්තු ලබා ගන්න →</a>
+          </div>
+          <div class="service-meta">
+            <div class="meta-badge"><span class="badge badge-gold">🌟 Popular</span></div>
+            <div>
+              <div class="meta-price-label">ආරම්භ වන ගාස්තු</div>
+              <div class="meta-price-value">රු. 30<small style="font-size:1rem;">/sqft</small></div>
+              <div class="meta-price-note">Prep + sealer + 2 coats</div>
+            </div>
+            <div class="meta-time">⏱️ 3–7 දිනය</div>
+            <div class="meta-time">✅ 2 Year Warranty</div>
+            <div class="meta-time">☔ Rain Resistant</div>
+            <a href="https://wa.me/94711234567?text=Exterior painting quote ලබා ගැනීමට කැමතියි" class="btn btn-gold btn-sm" target="_blank">💬 WhatsApp Quote</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="service-detail reveal">
+        <div class="service-detail-inner">
+          <div class="service-info">
+            <span class="service-icon-lg">🎨</span>
+            <h2>Special Design / Texture</h2>
+            <p>Texture, Ombre, Stencil, Geometric, Marble effect — ඔබේ නිවසට unique, instagram-worthy look. Interior designer consultation included.</p>
+            <div class="service-features">
+              <div class="service-feature">Designer consultation free</div>
+              <div class="service-feature">Texture & pattern samples</div>
+              <div class="service-feature">Ombre / gradient effects</div>
+              <div class="service-feature">Stencil & geometric designs</div>
+              <div class="service-feature">Marble & stone finishes</div>
+              <div class="service-feature">Feature wall specialization</div>
+            </div>
+            <a href="contact.html" class="btn btn-primary">ඇස්තමේන්තු ලබා ගන්න →</a>
+          </div>
+          <div class="service-meta">
+            <div class="meta-badge"><span class="badge badge-sage">✨ Premium</span></div>
+            <div>
+              <div class="meta-price-label">ආරම්භ වන ගාස්තු</div>
+              <div class="meta-price-value">රු. 45<small style="font-size:1rem;">/sqft</small></div>
+              <div class="meta-price-note">Design + execution included</div>
+            </div>
+            <div class="meta-time">⏱️ 3–8 දිනය</div>
+            <div class="meta-time">🎨 Custom Design</div>
+            <div class="meta-time">📐 Free Consultation</div>
+            <a href="https://wa.me/94711234567?text=Special Design quote ලබා ගෙන ගන්නට කැමතියි" class="btn btn-gold btn-sm" target="_blank">💬 WhatsApp Quote</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="service-detail reveal">
+        <div class="service-detail-inner">
+          <div class="service-info">
+            <span class="service-icon-lg">🔧</span>
+            <h2>Waterproofing</h2>
+            <p>ජල කාන්දු, damp walls, roof leaks — සම්පූර්ණ waterproofing solutions. Crystalline, membrane, bituminous methods. Guaranteed leak-free.</p>
+            <div class="service-features">
+              <div class="service-feature">Leak detection & diagnosis</div>
+              <div class="service-feature">Crystalline waterproofing</div>
+              <div class="service-feature">Roof membrane application</div>
+              <div class="service-feature">Bathroom & kitchen sealing</div>
+              <div class="service-feature">Foundation waterproofing</div>
+              <div class="service-feature">5 year leak guarantee</div>
+            </div>
+            <a href="contact.html" class="btn btn-primary">ඇස්තමේන්තු ලබා ගන්න →</a>
+          </div>
+          <div class="service-meta">
+            <div class="meta-badge"><span class="badge badge-terra">🛡️ Guaranteed</span></div>
+            <div>
+              <div class="meta-price-label">ආරම්භ වන ගාස්තු</div>
+              <div class="meta-price-value">රු. 40<small style="font-size:1rem;">/sqft</small></div>
+              <div class="meta-price-note">Diagnosis + treatment</div>
+            </div>
+            <div class="meta-time">⏱️ 1–4 දිනය</div>
+            <div class="meta-time">🛡️ 5 Year Guarantee</div>
+            <div class="meta-time">🔍 Free Inspection</div>
+            <a href="https://wa.me/94711234567?text=Waterproofing inspection ලබා ගෙන ගන්නට කැමතියි" class="btn btn-gold btn-sm" target="_blank">💬 WhatsApp Quote</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="service-detail reveal">
+        <div class="service-detail-inner">
+          <div class="service-info">
+            <span class="service-icon-lg">🌿</span>
+            <h2>Eco-Friendly Painting</h2>
+            <p>VOC-free, child-safe, environmentally friendly paints. ළමා කාමර, ගර්භිණී කාල, ආසාදන ඇති නිවාස සඳහා ideal. Zero toxic fumes.</p>
+            <div class="service-features">
+              <div class="service-feature">Zero VOC formula</div>
+              <div class="service-feature">Child & baby room safe</div>
+              <div class="service-feature">Allergy-friendly</div>
+              <div class="service-feature">Anti-bacterial coating</div>
+              <div class="service-feature">Washable finish</div>
+              <div class="service-feature">Green certified brands</div>
+            </div>
+            <a href="contact.html" class="btn btn-primary">ඇස්තමේන්තු ලබා ගන්න →</a>
+          </div>
+          <div class="service-meta">
+            <div class="meta-badge"><span class="badge badge-sage">🌿 Eco</span></div>
+            <div>
+              <div class="meta-price-label">ආරම්භ වන ගාස්තු</div>
+              <div class="meta-price-value">රු. 35<small style="font-size:1rem;">/sqft</small></div>
+              <div class="meta-price-note">Zero VOC paints included</div>
+            </div>
+            <div class="meta-time">⏱️ 2–4 දිනය</div>
+            <div class="meta-time">🌿 Eco Certified</div>
+            <div class="meta-time">👶 Child Safe</div>
+            <a href="https://wa.me/94711234567?text=Eco painting ගැන quote ලබා ගෙන ගන්නට කැමතියි" class="btn btn-gold btn-sm" target="_blank">💬 WhatsApp Quote</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRICING TABLE -->
+<section class="section-sm" style="background:var(--off-white);">
+  <div class="container">
+    <div class="eyebrow">ගාස්තු සාරාංශය</div>
+    <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:8px;">සාරාංශ ගාස්තු</h2>
+    <p style="color:var(--smoke);font-size:0.9rem;">* ගාස්තු ස්ථානය, ප්‍රමාණය, paint brand අනුව වෙනස් විය හැකිය.</p>
+    <table class="pricing-table reveal">
+      <thead>
+        <tr>
+          <th>සේවාව</th>
+          <th>ආරම්භ ගාස්තු</th>
+          <th>Paint Brand</th>
+          <th>Warranty</th>
+          <th>Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>ගෙදර ඇතුළත</td><td class="price-highlight">රු. 25/sqft</td><td>Dulux / Nippon</td><td>2 years</td><td>2–5 days</td></tr>
+        <tr><td>ගෙදර පිටත</td><td class="price-highlight">රු. 30/sqft</td><td>Weathershield</td><td>2 years</td><td>3–7 days</td></tr>
+        <tr><td>Special Design</td><td class="price-highlight">රු. 45/sqft</td><td>Premium range</td><td>2 years</td><td>3–8 days</td></tr>
+        <tr><td>Waterproofing</td><td class="price-highlight">රු. 40/sqft</td><td>Sika / Pidilite</td><td>5 years</td><td>1–4 days</td></tr>
+        <tr><td>Eco-Friendly</td><td class="price-highlight">රු. 35/sqft</td><td>Asian Paints Eco</td><td>2 years</td><td>2–4 days</td></tr>
+        <tr><td>ව්‍යාපාරික</td><td class="price-highlight">ඇස්තමේන්තු</td><td>All brands</td><td>Custom</td><td>Custom</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- COLOUR SECTION -->
+<section class="colours-section">
+  <div class="container">
+    <div class="eyebrow" style="justify-content:center;">1000+ Colours</div>
+    <h2 style="color:var(--cream);text-align:center;font-size:clamp(1.8rem,3vw,2.4rem);margin-bottom:8px;">ඔබේ colour ද ඇත</h2>
+    <p style="color:rgba(247,240,230,0.5);text-align:center;font-size:0.9rem;">Hover කරන්න colour name දැකීමට</p>
+    <div class="colour-grid">
+      <div class="colour-chip" style="background:#C4572E;"><span>Terracotta</span></div>
+      <div class="colour-chip" style="background:#5A7D5C;"><span>Sage Green</span></div>
+      <div class="colour-chip" style="background:#C9962A;"><span>Honey Gold</span></div>
+      <div class="colour-chip" style="background:#3D5A80;"><span>Navy Blue</span></div>
+      <div class="colour-chip" style="background:#8B6F5E;"><span>Warm Sand</span></div>
+      <div class="colour-chip" style="background:#D4B896;"><span>Pale Peach</span></div>
+      <div class="colour-chip" style="background:#2C4A3E;"><span>Forest Deep</span></div>
+      <div class="colour-chip" style="background:#9E3E1A;"><span>Rust</span></div>
+      <div class="colour-chip" style="background:#F0E6D3;"><span>Cream</span></div>
+      <div class="colour-chip" style="background:#6B4226;"><span>Mocha</span></div>
+      <div class="colour-chip" style="background:#A8C5AB;"><span>Mint</span></div>
+      <div class="colour-chip" style="background:#E8D5C4;"><span>Blush</span></div>
+      <div class="colour-chip" style="background:#4A4A6A;"><span>Slate</span></div>
+      <div class="colour-chip" style="background:#C9B8A8;"><span>Stone</span></div>
+      <div class="colour-chip" style="background:#7A9E7E;"><span>Eucalyptus</span></div>
+      <div class="colour-chip" style="background:#1E3A5F;"><span>Deep Ocean</span></div>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="contact.html" class="btn btn-white">🎨 Colour Consultation — නොමිලේ</a>
+    </div>
+  </div>
+</section>
+
+<div style="background:var(--cream);padding:80px 0;text-align:center;border-top:1px solid var(--border);">
+  <div class="container">
+    <h2 style="font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:12px;">ඇස්තමේන්තු ලබා ගන්නේ කෙසේද?</h2>
+    <p style="color:var(--smoke);margin-bottom:32px;">ලෙහෙසියෙන් — WhatsApp, Call, හෝ Form.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="contact.html" class="btn btn-primary btn-lg">📋 Form Submit</a>
+      <a href="https://wa.me/94711234567" class="btn btn-gold btn-lg" target="_blank">💬 WhatsApp</a>
+      <a href="tel:0711234567" class="btn btn-outline btn-lg">📞 071 123 4567</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand"><a class="logo" href="index.html">Lanka<span style="color:var(--terracotta);">Paint</span> Pro</a><p>ශ්‍රී ලංකාවේ විශ්වාසනීය නිවාස පිංතාරු සේවාව.</p></div>
+      <div class="footer-col"><h5>Links</h5><a href="index.html">මුල් පිටුව</a><a href="services.html">සේවා</a><a href="about.html">ගැන</a><a href="process.html">ක්‍රියාවලිය</a><a href="reviews.html">සාක්ෂ්‍ය</a><a href="contact.html">ඇමතීම</a></div>
+      <div class="footer-col"><h5>සේවා</h5><a href="services.html">Interior</a><a href="services.html">Exterior</a><a href="services.html">Special Design</a><a href="services.html">Waterproofing</a></div>
+      <div class="footer-col"><h5>ඇමතීම</h5><a href="tel:0711234567">📞 071 123 4567</a><a href="https://wa.me/94711234567" target="_blank">💬 WhatsApp</a><a href="contact.html">📋 Estimate Form</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2024 LankaPaint Pro</p></div>
+  </div>
+</footer>
+
+<div class="fab-group">
+  <div class="fab-wrap"><span class="fab-label">WhatsApp</span><a href="https://wa.me/94711234567" class="fab fab-whatsapp" target="_blank">💬</a></div>
+  <div class="fab-wrap"><span class="fab-label">Call</span><a href="tel:0711234567" class="fab fab-phone">📞</a></div>
+</div>
+<script>
+// ============================================
+// LANKAPAINT PRO — Shared JS
+// ============================================
+
+// Navbar scroll effect
+(function() {
+  const navbar = document.querySelector('.navbar');
+  if (!navbar) return;
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+})();
+
+// Mobile hamburger
+(function() {
+  const hamburger = document.querySelector('.hamburger');
+  const mobileNav = document.querySelector('.mobile-nav');
+  if (!hamburger || !mobileNav) return;
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+    document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+  });
+  mobileNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+})();
+
+// Scroll reveal
+(function() {
+  const els = document.querySelectorAll('.reveal');
+  if (!els.length) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(el => io.observe(el));
+})();
+
+// Active nav link
+(function() {
+  const path = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(a => {
+    const href = a.getAttribute('href') || '';
+    if (href === path || (path === '' && href === 'index.html')) {
+      a.classList.add('active');
+    }
+  });
+})();
+
+// WhatsApp quick message
+function waMsg(msg) {
+  const phone = '94711234567';
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+}
+
+// Toast notification
+function showToast(msg, type = 'success') {
+  const t = document.createElement('div');
+  t.style.cssText = `
+    position:fixed; bottom:90px; left:50%; transform:translateX(-50%);
+    background:${type==='success'?'#1a7a3a':'#c4572e'}; color:#fff;
+    padding:12px 24px; border-radius:100px; font-size:0.9rem; font-weight:600;
+    z-index:9999; box-shadow:0 8px 24px rgba(0,0,0,0.2);
+    animation:fadeIn 0.3s ease;
+  `;
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 3500);
+}
+
+</script>
+</body>
+</html>
