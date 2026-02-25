@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LankaPaint Pro ඇමතීම — නොමිලේ ඇස්තමේන්තු. WhatsApp, Call, Form. ඉක්මනින් reply.">
+<title>ඇමතීම — LankaPaint Pro</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.page-hero { padding:140px 0 64px;background:linear-gradient(160deg,var(--cream) 60%,var(--off-white));border-bottom:1px solid var(--border); }
+.page-breadcrumb { display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--smoke);margin-bottom:20px; }
+.page-breadcrumb a { color:var(--terracotta);text-decoration:none; }
+.page-breadcrumb span { opacity:0.4; }
+
+/* Contact options */
+.contact-options {
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+  margin-bottom:48px;
+}
+.contact-opt {
+  background:#fff;border:2px solid var(--border);
+  border-radius:var(--radius-md);padding:28px 24px;
+  text-align:center;text-decoration:none;
+  transition:all var(--transition);cursor:pointer;
+  display:block;
+}
+.contact-opt:hover { border-color:var(--terracotta);transform:translateY(-4px);box-shadow:var(--shadow-md); }
+.contact-opt.primary-opt { background:var(--terracotta);border-color:var(--terracotta);color:#fff; }
+.contact-opt.wa-opt { background:#075E54;border-color:#075E54;color:#fff; }
+.opt-icon { font-size:2rem;display:block;margin-bottom:12px; }
+.opt-label { font-weight:700;font-size:0.95rem;margin-bottom:4px;display:block; }
+.opt-sub { font-size:0.78rem;opacity:0.7; }
+
+/* Form + sidebar grid */
+.contact-layout {
+  display:grid;grid-template-columns:1fr 340px;gap:40px;align-items:start;
+}
+.form-card {
+  background:#fff;border:1px solid var(--border);
+  border-radius:var(--radius-lg);padding:40px;
+}
+.form-card h2 { font-size:1.4rem;margin-bottom:8px; }
+.form-card > p { color:var(--smoke);font-size:0.9rem;margin-bottom:32px; }
+
+.form-row { display:grid;grid-template-columns:1fr 1fr;gap:16px; }
+.form-group { margin-bottom:18px; }
+.form-group label {
+  display:block;font-size:0.8rem;font-weight:700;
+  letter-spacing:0.3px;margin-bottom:6px;
+  color:var(--mid-brown);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width:100%;padding:13px 16px;
+  background:var(--off-white);
+  border:1.5px solid var(--border);
+  border-radius:var(--radius-sm);
+  font-family:'DM Sans',sans-serif;font-size:0.9rem;
+  color:var(--deep-brown);outline:none;
+  transition:all var(--transition);
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color:var(--terracotta);
+  background:#fff;
+  box-shadow:0 0 0 3px rgba(196,87,46,0.08);
+}
+.form-group textarea { height:110px;resize:vertical; }
+.form-group input::placeholder { color:var(--smoke); }
+.form-group select option { background:#fff; }
+
+.form-area-grid {
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;
+  margin-bottom:18px;
+}
+.area-chip {
+  border:1.5px solid var(--border);border-radius:var(--radius-sm);
+  padding:10px 14px;cursor:pointer;
+  display:flex;align-items:center;gap:8px;
+  font-size:0.85rem;font-weight:500;
+  transition:all var(--transition);
+  user-select:none;
+}
+.area-chip:hover { border-color:var(--terracotta); }
+.area-chip.selected { background:rgba(196,87,46,0.08);border-color:var(--terracotta);color:var(--terracotta);font-weight:700; }
+.area-chip input[type=checkbox] { display:none; }
+
+.submit-btn {
+  width:100%;padding:16px;
+  background:var(--terracotta);color:#fff;
+  border:none;border-radius:var(--radius-full);
+  font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;
+  cursor:pointer;transition:all var(--transition);
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  box-shadow:0 4px 16px rgba(196,87,46,0.35);
+}
+.submit-btn:hover { background:var(--terra-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(196,87,46,0.4); }
+.submit-btn:disabled { opacity:0.7;transform:none; }
+
+.form-privacy { font-size:0.75rem;color:var(--smoke);text-align:center;margin-top:12px; }
+
+/* Sidebar */
+.sidebar { display:flex;flex-direction:column;gap:16px; }
+.sidebar-card {
+  background:#fff;border:1px solid var(--border);
+  border-radius:var(--radius-md);padding:24px;
+}
+.sidebar-card h4 { font-size:0.95rem;font-weight:700;margin-bottom:16px; }
+.contact-info-row {
+  display:flex;align-items:center;gap:12px;
+  padding:12px 0;border-top:1px solid var(--border);
+}
+.contact-info-row:first-of-type { border-top:none;padding-top:0; }
+.ci-icon {
+  width:40px;height:40px;border-radius:var(--radius-sm);
+  background:rgba(196,87,46,0.08);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;flex-shrink:0;
+}
+.ci-label { font-size:0.72rem;color:var(--smoke);margin-bottom:2px; }
+.ci-value { font-size:0.88rem;font-weight:600; }
+.ci-value a { color:var(--deep-brown);text-decoration:none; }
+.ci-value a:hover { color:var(--terracotta); }
+
+.whatsapp-quick {
+  background:#075E54;border:none;
+  border-radius:var(--radius-md);padding:20px;
+  text-align:center;text-decoration:none;display:block;
+  transition:all var(--transition);
+}
+.whatsapp-quick:hover { background:#056b4f;transform:translateY(-2px); }
+.whatsapp-quick .wa-big { font-size:2rem;display:block;margin-bottom:6px; }
+.whatsapp-quick h4 { color:#fff;font-size:0.95rem;margin-bottom:4px; }
+.whatsapp-quick p  { color:rgba(255,255,255,0.65);font-size:0.8rem; }
+
+.trust-items { display:flex;flex-direction:column;gap:10px; }
+.trust-item {
+  display:flex;align-items:center;gap:10px;
+  font-size:0.85rem;color:var(--smoke);
+}
+.trust-item::before { content:'✓';color:var(--sage);font-weight:700;flex-shrink:0; }
+
+/* Success state */
+.form-success {
+  display:none;text-align:center;padding:48px 24px;
+}
+.form-success.show { display:block; }
+.success-icon { font-size:4rem;margin-bottom:16px; }
+.form-success h3 { font-size:1.4rem;margin-bottom:8px; }
+.form-success p { color:var(--smoke);font-size:0.9rem;margin-bottom:24px; }
+
+/* Map placeholder */
+.map-placeholder {
+  background:linear-gradient(135deg,var(--off-white),var(--cream));
+  border:1px solid var(--border);border-radius:var(--radius-md);
+  height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;margin-top:20px;
+}
+.map-placeholder p { font-size:0.82rem;color:var(--smoke); }
+
+@media(max-width:900px){ .contact-layout{grid-template-columns:1fr;} .contact-options{grid-template-columns:1fr;} .form-row{grid-template-columns:1fr;} .form-area-grid{grid-template-columns:1fr 1fr;} }
+@media(max-width:500px){ .form-area-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a class="logo" href="index.html">Lanka<span>Paint</span> Pro</a>
+    <ul class="nav-links">
+      <li><a href="index.html">මුල් පිටුව</a></li><li><a href="services.html">සේවා</a></li>
+      <li><a href="about.html">ගැන</a></li><li><a href="process.html">ක්‍රියාවලිය</a></li>
+      <li><a href="reviews.html">සාක්ෂ්‍ය</a></li>
+      <li><a href="contact.html" class="btn btn-primary btn-sm nav-cta">📞 ඇමතීම</a></li>
+    </ul>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <a href="index.html">🏠 මුල් පිටුව</a><a href="services.html">🎨 සේවා</a>
+  <a href="about.html">👥 ගැන</a><a href="process.html">📋 ක්‍රියාවලිය</a>
+  <a href="reviews.html">⭐ සාක්ෂ්‍ය</a>
+  <div class="mobile-nav-cta">
+    <a href="contact.html" class="btn btn-primary btn-lg" style="justify-content:center;">📋 නොමිලේ ඇස්තමේන්තු</a>
+    <a href="https://wa.me/94711234567" class="btn btn-gold btn-lg" style="justify-content:center;" target="_blank">💬 WhatsApp</a>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="page-breadcrumb"><a href="index.html">මුල් පිටුව</a><span>/</span> ඇමතීම</div>
+    <div class="eyebrow">සම්බන්ධ වන්න</div>
+    <h1>නොමිලේ ඇස්තමේන්තු<br>ලබා ගන්න</h1>
+    <p style="color:var(--smoke);font-size:1rem;max-width:480px;">ලෙහෙසිම ක්‍රමය — WhatsApp, Call, හෝ Form. 24 ගණිනි reply.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <!-- Quick contact options -->
+    <div class="contact-options">
+      <a href="https://wa.me/94711234567?text=හෙලෝ! ඇස්තමේන්තු ලබා ගෙන ගන්නට කැමතියි." class="contact-opt wa-opt" target="_blank">
+        <span class="opt-icon">💬</span>
+        <span class="opt-label">WhatsApp</span>
+        <span class="opt-sub">ඉක්මනින්ම reply</span>
+      </a>
+      <a href="tel:0711234567" class="contact-opt primary-opt">
+        <span class="opt-icon">📞</span>
+        <span class="opt-label">071 123 4567</span>
+        <span class="opt-sub">7am – 6pm, සදා</span>
+      </a>
+      <div class="contact-opt" onclick="document.getElementById('contactForm').scrollIntoView({behavior:'smooth'});" style="color:var(--deep-brown);">
+        <span class="opt-icon">📋</span>
+        <span class="opt-label">Form Submit</span>
+        <span class="opt-sub">Detailed estimate</span>
+      </div>
+    </div>
+
+    <!-- Main layout -->
+    <div class="contact-layout" id="contactForm">
+
+      <!-- Form -->
+      <div class="form-card reveal">
+        <h2>📋 Estimate Form</h2>
+        <p>Details submit කළාම ඉක්මනින් call/WhatsApp කරනවා.</p>
+
+        <div class="form-main">
+          <form onsubmit="handleContactSubmit(event)" id="mainForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label>ඔබේ නම *</label>
+                <input type="text" placeholder="සම්පූර්ණ නම" required>
+              </div>
+              <div class="form-group">
+                <label>දුරකථන *</label>
+                <input type="tel" placeholder="07X XXX XXXX" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>නගරය / ගම *</label>
+                <input type="text" placeholder="E.g. කොළඹ, ගම්පහ, කළුතර" required>
+              </div>
+              <div class="form-group">
+                <label>ගෙදර ප්‍රමාණය (sq ft)</label>
+                <input type="number" placeholder="E.g. 1500">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>සේවා වර්ගය (select කරන්න) *</label>
+              <div class="form-area-grid">
+                <label class="area-chip" onclick="toggleChip(this)">
+                  <input type="checkbox"> 🏠 ගෙදර ඇතුළත
+                </label>
+                <label class="area-chip" onclick="toggleChip(this)">
+                  <input type="checkbox"> 🏗️ ගෙදර පිටත
+                </label>
+                <label class="area-chip" onclick="toggleChip(this)">
+                  <input type="checkbox"> 🎨 Special Design
+                </label>
+                <label class="area-chip" onclick="toggleChip(this)">
+                  <input type="checkbox"> 🔧 Waterproofing
+                </label>
+                <label class="area-chip" onclick="toggleChip(this)">
+                  <input type="checkbox"> 🌿 Eco-Friendly
+                </label>
+                <label class="area-chip" onclick="toggleChip(this)">
+                  <input type="checkbox"> 🏢 ව්‍යාපාරික
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Paint Brand Preference</label>
+              <select>
+                <option value="">-- ඕනෑ නැත (best suggest කරනවා) --</option>
+                <option>Dulux</option>
+                <option>Nippon Paint</option>
+                <option>Asian Paints</option>
+                <option>Weathershield</option>
+                <option>Eco-Friendly Brand</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>කාලය (project start කිරීමට)</label>
+              <select>
+                <option>ඉක්මනින් (1–2 weeks)</option>
+                <option>1 මාසය ඇතුළත</option>
+                <option>2–3 මාසය ඇතුළත</option>
+                <option>Planning stage</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>අමතර details / ප්‍රශ්නය</label>
+              <textarea placeholder="ගෙදරේ rooms ගණන, special requirements, colour ideas..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">
+              ✓ නොමිලේ ඇස්තමේන්තු Submit කරන්න
+            </button>
+            <p class="form-privacy">🔒 ඔබේ details secure. Third parties සමඟ share නොකෙරේ.</p>
+          </form>
+
+          <div class="form-success" id="formSuccess">
+            <div class="success-icon">🎉</div>
+            <h3>ස්තූතියි!</h3>
+            <p>ඔබේ request ලැබුණා. 24 ගණිනි call / WhatsApp කරනවා. දිගටම WhatsApp ලෙ chat කරන්නත් හැකිය.</p>
+            <a href="https://wa.me/94711234567?text=Form submit කළා, ඇස්තමේන්තු ගැන කතා කළොත් හොඳයි" class="btn btn-gold" target="_blank">💬 WhatsApp ගෙන Chat</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <a href="https://wa.me/94711234567?text=හෙලෝ! ඇස්තමේන්තු ලබා ගෙන ගන්නට කැමතියි." class="whatsapp-quick" target="_blank">
+          <span class="wa-big">💬</span>
+          <h4>WhatsApp Chat</h4>
+          <p>ඉක්මනින් reply. Photos send කළොත් better estimate</p>
+        </a>
+
+        <div class="sidebar-card">
+          <h4>📞 ඇමතීමේ Details</h4>
+          <div class="contact-info-row">
+            <div class="ci-icon">📞</div>
+            <div><div class="ci-label">Phone</div><div class="ci-value"><a href="tel:0711234567">071 123 4567</a></div></div>
+          </div>
+          <div class="contact-info-row">
+            <div class="ci-icon">💬</div>
+            <div><div class="ci-label">WhatsApp</div><div class="ci-value"><a href="https://wa.me/94711234567" target="_blank">+94 71 123 4567</a></div></div>
+          </div>
+          <div class="contact-info-row">
+            <div class="ci-icon">✉️</div>
+            <div><div class="ci-label">Email</div><div class="ci-value"><a href="mailto:info@lankapaintpro.lk">info@lankapaintpro.lk</a></div></div>
+          </div>
+          <div class="contact-info-row">
+            <div class="ci-icon">🕗</div>
+            <div><div class="ci-label">Working Hours</div><div class="ci-value">7:00am – 6:00pm, සදා</div></div>
+          </div>
+          <div class="map-placeholder">
+            <span style="font-size:2rem;">📍</span>
+            <p>ශ්‍රී ලංකාව පුරා සේවාව</p>
+            <p style="font-size:0.75rem;color:var(--terracotta);">කොළඹ • ගම්පහ • කළුතර • ගාල්ල • කෑගල්ල</p>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <h4>✅ ඇයි LankaPaint?</h4>
+          <div class="trust-items">
+            <div class="trust-item">නොමිලේ site visit + estimate</div>
+            <div class="trust-item">2 Year Warranty included</div>
+            <div class="trust-item">Premium brands only</div>
+            <div class="trust-item">Transparent pricing</div>
+            <div class="trust-item">24hr response guarantee</div>
+            <div class="trust-item">500+ happy customers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand"><a class="logo" href="index.html">Lanka<span style="color:var(--terracotta);">Paint</span> Pro</a><p>ශ්‍රී ලංකාවේ විශ්වාසනීය නිවාස පිංතාරු සේවාව.</p></div>
+      <div class="footer-col"><h5>Links</h5><a href="index.html">මුල් පිටුව</a><a href="services.html">සේවා</a><a href="about.html">ගැන</a><a href="process.html">ක්‍රියාවලිය</a><a href="reviews.html">සාක්ෂ්‍ය</a><a href="contact.html">ඇමතීම</a></div>
+      <div class="footer-col"><h5>ඇමතීම</h5><a href="tel:0711234567">📞 071 123 4567</a><a href="https://wa.me/94711234567" target="_blank">💬 WhatsApp</a><a href="mailto:info@lankapaintpro.lk">✉️ Email</a></div>
+      <div class="footer-col"><h5>Service Areas</h5><a href="#">කොළඹ</a><a href="#">ගම්පහ</a><a href="#">කළුතර</a><a href="#">ගාල්ල</a><a href="#">කෑගල්ල</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2024 LankaPaint Pro. සියලු හිමිකම් ඇවිරිණි.</p></div>
+  </div>
+</footer>
+
+<div class="fab-group">
+  <div class="fab-wrap"><span class="fab-label">WhatsApp</span><a href="https://wa.me/94711234567" class="fab fab-whatsapp" target="_blank">💬</a></div>
+  <div class="fab-wrap"><span class="fab-label">Call Now</span><a href="tel:0711234567" class="fab fab-phone">📞</a></div>
+</div>
+
+<script src="main.js"></script>
+<script>
+function toggleChip(label) {
+  label.classList.toggle('selected');
+}
+function handleContactSubmit(e) {
+  e.preventDefault();
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = '⏳ Submitting...';
+  btn.disabled = true;
+  setTimeout(() => {
+    document.getElementById('mainForm').style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+    showToast('✓ ස්තූතියි! ඉක්මනින් ඔබව සම්බන්ධ කරගනිමු.', 'success');
+  }, 1500);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LankaPaint Pro ගැන — ශ්‍රී ලංකාවේ විශ්වාසනීය නිවාස පිංතාරු සේවාව. 12+ වසර, 500+ projects, professional team.">
+<title>ගැන — LankaPaint Pro</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.page-hero { padding:140px 0 80px; background:linear-gradient(160deg,var(--cream) 60%,var(--off-white)); border-bottom:1px solid var(--border); }
+.page-breadcrumb { display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--smoke);margin-bottom:20px; }
+.page-breadcrumb a { color:var(--terracotta);text-decoration:none; }
+.page-breadcrumb span { opacity:0.4; }
+
+/* Story */
+.story-grid { display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center; }
+.story-visual {
+  position:relative;
+  background:linear-gradient(135deg,var(--terracotta),var(--terra-dark));
+  border-radius:var(--radius-lg); padding:56px 40px;
+  color:#fff;
+}
+.story-visual-stat {
+  display:flex;flex-direction:column;gap:32px;
+}
+.s-stat { border-top:1px solid rgba(255,255,255,0.15); padding-top:24px; }
+.s-stat:first-child { border-top:none; padding-top:0; }
+.s-num { font-family:'Playfair Display',serif; font-size:3rem;font-weight:900;line-height:1; }
+.s-lbl { font-size:0.85rem;color:rgba(255,255,255,0.6);margin-top:4px; }
+.story-badge {
+  position:absolute;top:-16px;right:-16px;
+  background:var(--gold);color:#fff;
+  width:80px;height:80px;border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-weight:900;
+  box-shadow:var(--shadow-md);
+}
+.story-badge-num { font-size:1.6rem;line-height:1; }
+.story-badge-lbl { font-size:0.5rem;letter-spacing:1px;text-transform:uppercase; }
+
+.story-text h2 { font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:20px; }
+.story-text p { color:var(--smoke);line-height:1.8;margin-bottom:16px;font-size:0.95rem; }
+
+/* Team */
+.team-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:24px; }
+.team-card {
+  background:#fff;border:1px solid var(--border);
+  border-radius:var(--radius-md);overflow:hidden;
+  transition:all var(--transition);text-align:center;
+}
+.team-card:hover { box-shadow:var(--shadow-md);transform:translateY(-4px); }
+.team-avatar {
+  width:100%;height:180px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:4rem;
+}
+.team-info { padding:24px; }
+.team-name { font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:4px; }
+.team-role { font-size:0.8rem;color:var(--terracotta);font-weight:600;letter-spacing:0.5px;text-transform:uppercase;margin-bottom:10px; }
+.team-bio  { font-size:0.83rem;color:var(--smoke);line-height:1.65; }
+
+/* Values */
+.values-grid { display:grid;grid-template-columns:repeat(2,1fr);gap:24px; }
+.value-card {
+  background:var(--warm-white);border:1px solid var(--border);
+  border-radius:var(--radius-md);padding:32px;
+  display:flex;gap:20px;align-items:flex-start;
+  transition:all var(--transition);
+}
+.value-card:hover { border-color:rgba(196,87,46,0.3);box-shadow:var(--shadow-sm); }
+.value-icon {
+  width:52px;height:52px;border-radius:var(--radius-sm);
+  background:rgba(196,87,46,0.08);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;flex-shrink:0;
+}
+.value-card h3 { font-size:1rem;font-weight:700;margin-bottom:8px; }
+.value-card p  { font-size:0.855rem;color:var(--smoke);line-height:1.65; }
+
+/* Brands */
+.brands-row { display:flex;gap:24px;justify-content:center;flex-wrap:wrap; }
+.brand-chip {
+  background:#fff;border:1px solid var(--border);
+  border-radius:var(--radius-md);padding:16px 28px;
+  font-weight:700;font-size:0.9rem;letter-spacing:0.3px;
+  transition:all var(--transition);
+}
+.brand-chip:hover { border-color:var(--terracotta);color:var(--terracotta);transform:translateY(-2px); }
+
+@media(max-width:860px){ .story-grid{grid-template-columns:1fr;gap:48px;} .team-grid{grid-template-columns:1fr 1fr;} .values-grid{grid-template-columns:1fr;} }
+@media(max-width:560px){ .team-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a class="logo" href="index.html">Lanka<span>Paint</span> Pro</a>
+    <ul class="nav-links">
+      <li><a href="index.html">මුල් පිටුව</a></li><li><a href="services.html">සේවා</a></li>
+      <li><a href="about.html">ගැන</a></li><li><a href="process.html">ක්‍රියාවලිය</a></li>
+      <li><a href="reviews.html">සාක්ෂ්‍ය</a></li>
+      <li><a href="contact.html" class="btn btn-primary btn-sm nav-cta">📞 ඇමතීම</a></li>
+    </ul>
+    <button class="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <a href="index.html">🏠 මුල් පිටුව</a><a href="services.html">🎨 සේවා</a>
+  <a href="about.html">👥 ගැන</a><a href="process.html">📋 ක්‍රියාවලිය</a>
+  <a href="reviews.html">⭐ සාක්ෂ්‍ය</a>
+  <div class="mobile-nav-cta">
+    <a href="contact.html" class="btn btn-primary btn-lg" style="justify-content:center;">📋 නොමිලේ ඇස්තමේන්තු</a>
+    <a href="https://wa.me/94711234567" class="btn btn-gold btn-lg" style="justify-content:center;" target="_blank">💬 WhatsApp</a>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="page-breadcrumb"><a href="index.html">මුල් පිටුව</a><span>/</span> ගැන</div>
+    <div class="eyebrow">අපේ ගැන</div>
+    <h1>ශ්‍රී ලංකාවේ<br>විශ්වාසනීය නාමය</h1>
+    <p>2012 සිට ශ්‍රී ලංකාව පුරා 500+ ගෙවල් සාර්ථකව paint කළ professional team.</p>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="section">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-visual reveal">
+        <div class="story-badge">
+          <span class="story-badge-num">12</span>
+          <span class="story-badge-lbl">YEARS</span>
+        </div>
+        <div class="story-visual-stat">
+          <div class="s-stat">
+            <div class="s-num">500+</div>
+            <div class="s-lbl">සිදු කළ ව්‍යාපෘති</div>
+          </div>
+          <div class="s-stat">
+            <div class="s-num">98%</div>
+            <div class="s-lbl">සතුටුදායක ගෙවල් හිමිකරුවන්</div>
+          </div>
+          <div class="s-stat">
+            <div class="s-num">25+</div>
+            <div class="s-lbl">නිපුණ කාර්ය මණ්ඩලය</div>
+          </div>
+          <div class="s-stat">
+            <div class="s-num">15+</div>
+            <div class="s-lbl">ගෙවල් සෑම සතියෙකටම</div>
+          </div>
+        </div>
+      </div>
+      <div class="story-text reveal animate-delay-1">
+        <div class="eyebrow">අපේ කතාව</div>
+        <h2>2012 සිට<br>ඔබේ නිවස සඳහා</h2>
+        <p>LankaPaint Pro ආරම්භ කළේ 2012 දී, කුඩා team එකක් සමඟ. අප අදහස සරළයි — ගෙවල් හිමිකරුවන්ට high quality painting service affordable price ලාට.</p>
+        <p>2012 සිට අදදක් දශකයකට වැඩි කාලයක් ශ්‍රී ලංකාව පුරා — කොළඹ, ගම්පහ, කළුතර, ගාල්ල, කෑගල්ල, නුවර ඇතුළු ස්ථාන රාශියක — 500කට අධික ව්‍යාපෘති සාර්ථකව.</p>
+        <p>අදත් අප අදහස ඒ ම ය. Honesty, quality, punctuality — ගෙවල් හිමිකරුවන් 100% satisfied.</p>
+        <div style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn-primary">📋 ඇස්තමේන්තු ලබා ගන්න</a>
+          <a href="process.html" class="btn btn-outline">ක්‍රියාවලිය බලන්න →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="section-sm" style="background:var(--off-white);">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <div class="eyebrow">අපේ ගුණාත්මකතා</div>
+      <h2 style="font-size:clamp(1.8rem,3vw,2.4rem);">ඇයි අප වෙනස්?</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <div class="value-icon">🏆</div>
+        <div><h3>ගුණාත්මකතා (Quality)</h3><p>Premium brands — Dulux, Nippon, Asian Paints. No cheap substitutes. Surface prep සිට final coat දක්වා professional standard.</p></div>
+      </div>
+      <div class="value-card reveal animate-delay-1">
+        <div class="value-icon">⏰</div>
+        <div><h3>කාලීන (Punctuality)</h3><p>නියමිත දිනට 95%+ completion rate. ප්‍රමාදය ඇතිවුවොත් ගාස්තු discount දෙනු ලැබේ. ඔබේ කාලය අපට ගරුත්වයි.</p></div>
+      </div>
+      <div class="value-card reveal">
+        <div class="value-icon">💬</div>
+        <div><h3>හොඳ සන්නිවේදනය</h3><p>Project එකේ ආරම්භ සිට සම්පූර්ණය දක්වා ඔබව update කරනවා. WhatsApp ගිහින් ඕනෑ ම වේලාවෙ ask කරන්න.</p></div>
+      </div>
+      <div class="value-card reveal animate-delay-1">
+        <div class="value-icon">🛡️</div>
+        <div><h3>2 වසර Warranty</h3><p>සෑම project ectකටම 2 year warranty. Defects නිවැරදි කිරීම නොමිලේ. ඔබේ investment ආරක්ෂිතයි.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px;">
+      <div class="eyebrow">කාර්ය මණ්ඩලය</div>
+      <h2 style="font-size:clamp(1.8rem,3vw,2.4rem);">Expert Team</h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#c4572e22,#c4572e44);">👨‍🎨</div>
+        <div class="team-info">
+          <div class="team-name">ප්‍රියන්ත රත්නායක</div>
+          <div class="team-role">Founder & Head Painter</div>
+          <p class="team-bio">12+ වසර painting experience. Dulux certified applicator. 300+ projects personally supervised.</p>
+        </div>
+      </div>
+      <div class="team-card reveal animate-delay-1">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#5a7d5c22,#5a7d5c44);">👩‍💼</div>
+        <div class="team-info">
+          <div class="team-name">කල්යාණී ජයසිංහ</div>
+          <div class="team-role">Interior Design Consultant</div>
+          <p class="team-bio">Colour psychology specialist. ඔබේ නිවසට perfect colour scheme design. 8 years experience.</p>
+        </div>
+      </div>
+      <div class="team-card reveal animate-delay-2">
+        <div class="team-avatar" style="background:linear-gradient(135deg,#c9962a22,#c9962a44);">👨‍🔧</div>
+        <div class="team-info">
+          <div class="team-name">ශාන් ගොඩගේ</div>
+          <div class="team-role">Waterproofing Specialist</div>
+          <p class="team-bio">Sika certified technician. Roof, bathroom, foundation waterproofing expert. 6 years experience.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section class="section-sm" style="background:var(--cream);border-top:1px solid var(--border);">
+  <div class="container text-center">
+    <div class="eyebrow" style="justify-content:center;">Certified Partners</div>
+    <h2 style="font-size:clamp(1.5rem,2.5vw,2rem);margin-bottom:8px;">ලොව ප්‍රසිද්ධ Brands</h2>
+    <p style="color:var(--smoke);margin-bottom:36px;font-size:0.9rem;">Authorized applicators. Genuine products only.</p>
+    <div class="brands-row reveal">
+      <div class="brand-chip">🎨 Dulux</div>
+      <div class="brand-chip">🎨 Nippon Paint</div>
+      <div class="brand-chip">🎨 Asian Paints</div>
+      <div class="brand-chip">🎨 Weathershield</div>
+      <div class="brand-chip">🔧 Sika</div>
+      <div class="brand-chip">🔧 Pidilite</div>
+      <div class="brand-chip">🎨 Rocell</div>
+    </div>
+  </div>
+</section>
+
+<div style="background:var(--deep-brown);padding:80px 0;text-align:center;">
+  <div class="container">
+    <h2 style="color:var(--cream);font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:12px;">අද ම ආරම්භ කරමු</h2>
+    <p style="color:rgba(247,240,230,0.6);margin-bottom:32px;">නොමිලේ ඇස්තමේන්තු — 24 ගණනින් reply</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="contact.html" class="btn btn-primary btn-lg">📋 ඇස්තමේන්තු ලබා ගන්න</a>
+      <a href="https://wa.me/94711234567" class="btn btn-gold btn-lg" target="_blank">💬 WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand"><a class="logo" href="index.html">Lanka<span style="color:var(--terracotta);">Paint</span> Pro</a><p>ශ්‍රී ලංකාවේ විශ්වාසනීය නිවාස පිංතාරු සේවාව.</p></div>
+      <div class="footer-col"><h5>Links</h5><a href="index.html">මුල් පිටුව</a><a href="services.html">සේවා</a><a href="about.html">ගැන</a><a href="process.html">ක්‍රියාවලිය</a><a href="reviews.html">සාක්ෂ්‍ය</a><a href="contact.html">ඇමතීම</a></div>
+      <div class="footer-col"><h5>සේවා</h5><a href="services.html">Interior</a><a href="services.html">Exterior</a><a href="services.html">Waterproofing</a><a href="services.html">Eco Paint</a></div>
+      <div class="footer-col"><h5>ඇමතීම</h5><a href="tel:0711234567">📞 071 123 4567</a><a href="https://wa.me/94711234567" target="_blank">💬 WhatsApp</a><a href="contact.html">📋 Estimate</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2024 LankaPaint Pro</p></div>
+  </div>
+</footer>
+<div class="fab-group">
+  <div class="fab-wrap"><span class="fab-label">WhatsApp</span><a href="https://wa.me/94711234567" class="fab fab-whatsapp" target="_blank">💬</a></div>
+  <div class="fab-wrap"><span class="fab-label">Call</span><a href="tel:0711234567" class="fab fab-phone">📞</a></div>
+</div>
+<script src="main.js"></script>
+</body>
+</html>
